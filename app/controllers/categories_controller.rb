@@ -48,7 +48,8 @@ class CategoriesController < ApplicationController
 
     def is_admin
       unless  current_user.admin? 
-        redirect_to new_user_session_path
+        flash[:notice] = 'Only admins can add categories.'
+        render action: 'index'
       end
     end
 end
